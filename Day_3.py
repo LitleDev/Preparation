@@ -56,6 +56,19 @@ def group_anagram_optimized(strs):
             group[key] = []
         group[key].append(word)
     return list(group.values())
+def k_frequency(k , array):
+    # write your code here 
+    dict = {}
+    
+    for ele in array:
+        if ele not in dict:
+            dict[ele] = 1
+        else:
+            dict[ele]+= 1
+    sorted_item = sorted(dict.items() , key = lambda x:(x[1] , x[0]) , reverse = True)
+    print(sorted_item)
+    return [ sorted_item[i][0]  for i in range(k)]
+
 
 if __name__ == "__main__":
     s1 = 'alelrgy'
@@ -71,4 +84,11 @@ if __name__ == "__main__":
     res2 = group_anagram(strs)
     print(res2)
     print(group_anagram_optimized(strs))
+    # array = [1,1,2,2,4,4,4,4,3,3,3,5,5,5]
+    # array = [1,1,2,2,3,3]
+    # k=2
+    array = [1,2,2,3,4,3]
+    k = 4
+    res1 = k_frequency(k , array)
+    print(res1)
     
